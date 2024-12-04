@@ -570,8 +570,18 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length < 1) {
+    return [];
+  }
+  const middleIndex = Math.floor(arr.length / 2);
+  const isOddLength = arr.length % 2 !== 0;
+  const head = arr.slice(0, middleIndex);
+  const tail = arr.slice(isOddLength ? middleIndex + 1 : middleIndex);
+  if (isOddLength) {
+    return tail.concat(arr[middleIndex], head);
+  }
+  return tail.concat(head);
 }
 
 module.exports = {
